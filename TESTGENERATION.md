@@ -223,6 +223,7 @@ Properties explained:
     to use dynamic values like `{{$guid}}` or `{{$randomInt}}`.
   - **overwrite (Boolean true/false | Default: true)** : Overwrites the request body value OR attach the value to the
     original request body value.
+  - **remove (Boolean true/false | Default: false)** : Removes the request body property, including the value
 
 Postman request body before:
 
