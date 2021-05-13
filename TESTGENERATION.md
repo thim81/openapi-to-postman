@@ -119,14 +119,16 @@ To be able to do this very specifically, there are options to define the targets
 - **openApiOperationId (String)** : References to the OpenApi operationId, example: `listPets`
 - **openApiOperation (String)** :  References to a combination of the OpenApi method & path, example: `GET::/pets`
 
-An `openApiOperationId` is advised to be unique by OpenApi but optional. To offer support for OpenApi document that dont
-have operationIds, we have added the `openApiOperation` which is the unique combination of the OpenApi method & path,
-with as `::` separator symbol.
+An `openApiOperationId` is an optional property. To offer support for OpenApi documents that don't have operationIds, we
+have added the `openApiOperation` definition which is the unique combination of the OpenApi method & path, with a `::`
+separator symbol.
 
 This will allow targeting for very specific OpenApi items.
 
-To facilitate managing the targeting, we have also included wildcard options for the `openApiOperation` option, for the
-methods & path definition.
+To facilitate managing the filtering, we have included wildcard options for the `openApiOperation` option, supporting the
+methods & path definitions.
+
+REMARK: Be sure to put quotes around the target definition.
 
 Strict matching example: `"openApiOperation": "GET::/pets",`
 This will target only the "GET" method and the specific path "/pets"
@@ -135,12 +137,12 @@ Method wildcard matching example: `"openApiOperation": "*::/pets",`
 This will target all methods ('get', 'put', 'post', 'delete', 'options', 'head', 'patch', 'trace') and the specific
 path "/pets"
 
-Path wildcard matching example: `"openApiOperation": "GET::/pets/*",`
+Path wildcard matching example: `"openApiOperation": "GET::/pets/*"`
 This will target only the "GET" method and any path matching any folder behind the "/pets", like "/pets/123" and
 "/pets/123/buy".
 
 Method & Path wildcard matching example: `"openApiOperation": "*::/pets/*",`
-A combination of wildcard for method and path are also supported.
+A combination of wildcards for the method and path parts are even possible.
 
 ## Postman test suite assignPmVariables
 
