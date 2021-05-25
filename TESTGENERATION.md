@@ -351,14 +351,12 @@ if (jsonData.id) {
   pm.environment.set("post-accounts.id", jsonData.id);
   console.log("pm.environment - use {{post-accounts.id}} as variable for value", jsonData.id);
 }
-;
 
 // pm.environment - Set post-accounts.servers[0] as environment variable
 if (jsonData.value[0].servers[0]) {
   pm.environment.set("server-address", jsonData.value[0].servers[0]);
   console.log("pm.environment - use {{server-address}} as variable for value", jsonData.value[0].servers[0]);
 }
-;
 ```
 
 ## Postman test suite overwriteRequests
