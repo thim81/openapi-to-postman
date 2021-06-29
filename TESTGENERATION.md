@@ -110,6 +110,7 @@ in `tests` array, will be added to the postman test scripts.
   see [Postman test suite properties](#postman-test-suite-properties)) with specifics for the openApiOperationId.
 - **overwrite (Boolean true/false)** : Resets all generateTests and overwrites them with the defined tests from
   the `tests` array. Default: false
+- ** append (Boolean true/false)** : Place the tests after (append) or before (prepend) all generated tests. Default: true
 
 ## Postman test suite contentChecks
 
@@ -274,34 +275,34 @@ A combination of wildcards for the method and path parts are even possible.
 
 ## Postman test suite assignPmVariables
 
-To facilitate automation, we provide the option set "pm.environment" variables with values from the response. The
-assigning of the pm.environment are mapped based on the OpenApi operationId.
+To facilitate automation, we provide the option set "pm.collection" variables with values from the response. The
+assigning of the pm.collection are mapped based on the OpenApi operationId.
 
-REMARK: By default the test suite will create a pm.environment variable for the ID property in the response object, if ID
+REMARK: By default the test suite will create a pm.collection variable for the ID property in the response object, if ID
 is present in the response.
 
-Anything added in `assignPmVariables` array, will be used to generate specific pm.environment variables based on the
+Anything added in `assignPmVariables` array, will be used to generate specific pm.collection variables based on the
 postman response body.
 
 Properties explained:
 
 Target options:
 
-- **openApiOperationId (String)** : Reference to the OpenApi operationId for which the Postman pm.environment variable
+- **openApiOperationId (String)** : Reference to the OpenApi operationId for which the Postman pm.collection variable
   will be set. (example: `listPets`)
 - **openApiOperation (String)** : Reference to combination of the OpenApi method & path, for which the Postman
-  pm.environment variable will be set. (example: `GET::/pets`)
+  pm.collection variable will be set. (example: `GET::/pets`)
 
 These target options are both supported for defining a target. In case both are set for the same target, only
 the `openApiOperationId` will be used for overwrites.
 
-EnvironmentVariables options:
+collectionVariables options:
 
-- **environmentVariables (Array)** : Array of key/value pairs to set the Postman variables.
-  - **responseBodyProp (string)** : The property for which the value will be taken in the response body and set the value as the pm.environment value.
-  - **responseHeaderProp (string)** : The property for which the value will be taken in the response header and set the value as the pm.environment value.
-  - **requestBodyProp (string)** : The property for which the value will be taken in the request body and set the value as the pm.environment value.
-  - **value (string)** : The defined value that will be set as the pm.environment value.
+- **collectionVariables (Array)** : Array of key/value pairs to set the Postman variables.
+  - **responseBodyProp (string)** : The property for which the value will be taken in the response body and set the value as the pm.collection value.
+  - **responseHeaderProp (string)** : The property for which the value will be taken in the response header and set the value as the pm.collection value.
+  - **requestBodyProp (string)** : The property for which the value will be taken in the request body and set the value as the pm.collection value.
+  - **value (string)** : The defined value that will be set as the pm.collection value.
   - **name (string OPTIONAL | Default: openApiOperationId.responseProp)** : The name that will be used to overwrite the default generated variable name
 
 Example:
